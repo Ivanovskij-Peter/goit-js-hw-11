@@ -140,28 +140,28 @@ const product4 = {
 // toGetSumm(product3, 6).then(log);
 // toGetSumm(product3, 10).then(log);
 
-const toGetSumm = function (obj) {
-  let num = Math.floor(Math.random() * (20 - 1) + 1);
-  let ms = Math.floor(Math.random() * (3000 - 1000 + 1) + 1000);
-  console.log(ms);
-  console.log(num);
-  return new Promise((res, rej) => {
-    setTimeout(() => {
-      if (obj.count >= num) {
-        obj.price * num;
-        res({ sum: obj.price * num, delay: ms });
-      } else {
-        rej(obj);
-      }
-    }, ms);
-  });
-};
-const errLog = function ({ id, count }) {
-  console.log(`В данном объекте ${id} осталось ${count} единиц`);
-};
-const esLog = function ({ sum, delay }) {
-  console.log(`Ваш заказ на ${sum} будет выполнен через ${delay} милисекунд`);
-};
-toGetSumm(product4, 1000).then(esLog).catch(errLog);
-toGetSumm(product3, 3000).then(esLog).catch(errLog);
-console.log(toGetSumm(product3, 1000));
+// const toGetSumm = function (obj) {
+//   let num = Math.floor(Math.random() * (20 - 1) + 1);
+//   let ms = Math.floor(Math.random() * (3000 - 1000 + 1) + 1000);
+//   console.log(ms);
+//   console.log(num);
+//   return new Promise((res, rej) => {
+//     setTimeout(() => {
+//       if (obj.count >= num) {
+//         obj.price * num;
+//         res({ sum: obj.price * num, delay: ms });
+//       } else {
+//         rej(obj);
+//       }
+//     }, ms);
+//   });
+// };
+// const errLog = function ({ id, count }) {
+//   console.log(`В данном объекте ${id} осталось ${count} единиц`);
+// };
+// const esLog = function ({ sum, delay }) {
+//   console.log(`Ваш заказ на ${sum} будет выполнен через ${delay} милисекунд`);
+// };
+// toGetSumm(product4, 1000).then(esLog).catch(errLog);
+// toGetSumm(product3, 3000).then(esLog).catch(errLog);
+// console.log(toGetSumm(product3, 1000));
