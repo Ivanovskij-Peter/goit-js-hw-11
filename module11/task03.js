@@ -4,40 +4,42 @@
 // });
 // Для подсчета значений используй следующие готовые формулы, где time - разница между targetDate и текущей датой.
 
-// const refs = {
-//   daysRef: document.querySelector('span[data-value="days"]'),
-//   hoursRef: document.querySelector('span[data-value="hours"]'),
-//   minsRef: document.querySelector('span[data-value="mins"]'),
-//   secsRef: document.querySelector('span[data-value="secs"]'),
-// };
+const refs = {
+  daysRef: document.querySelector('span[data-value="days"]'),
+  hoursRef: document.querySelector('span[data-value="hours"]'),
+  minsRef: document.querySelector('span[data-value="mins"]'),
+  secsRef: document.querySelector('span[data-value="secs"]'),
+};
 
-// const timer = {
-//   start() {
-//     const targetDate = new Date("Jul 17, 2021");
-//     setInterval(() => {
-//       const currentDate = Date.now();
-//       const deltaTime = targetDate - currentDate;
-//       updateClockface(deltaTime);
-//     }, 1000);
-//   },
-// };
-// timer.start();
+const timer = {
+  start() {
+    const targetDate = new Date("Jul 17, 2021");
+    setInterval(() => {
+      const currentDate = Date.now();
+      const deltaTime = targetDate - currentDate;
+      updateClockface(deltaTime);
+    }, 1000);
+  },
+};
+timer.start();
 
-// function updateClockface(time) {
-//   const days = pad(Math.floor(time / (1000 * 60 * 60 * 24)));
-//   const hours = pad(
-//     Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-//   );
-//   const mins = pad(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
-//   const secs = pad(Math.floor((time % (1000 * 60)) / 1000));
-//   refs.daysRef.textContent = `${days}`;
-//   refs.hoursRef.textContent = `${hours}`;
-//   refs.minsRef.textContent = `${mins}`;
-//   refs.secsRef.textContent = `${secs}`;
-// }
-// function pad(value) {
-//   return String(value).padStart(2, "0");
-// }
+function updateClockface(time) {
+  const days = pad(Math.floor(time / (1000 * 60 * 60 * 24)));
+  const hours = pad(
+    Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+  );
+  const mins = pad(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
+  const secs = pad(Math.floor((time % (1000 * 60)) / 1000));
+}
+function getTime() {
+  refs.daysRef.textContent = `${days}`;
+  refs.hoursRef.textContent = `${hours}`;
+  refs.minsRef.textContent = `${mins}`;
+  refs.secsRef.textContent = `${secs}`;
+}
+function pad(value) {
+  return String(value).padStart(2, "0");
+}
 
 /*
  * Оставшиеся дни: делим значение UTC на 1000 * 60 * 60 * 24, количество
