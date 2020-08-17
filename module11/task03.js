@@ -10,32 +10,33 @@ const refs = {
   minsRef: document.querySelector('span[data-value="mins"]'),
   secsRef: document.querySelector('span[data-value="secs"]'),
 };
-
+const targetDate = new Date("Jul 17, 2021");
+let newTime = {};
 const timer = {
   start() {
-    const targetDate = new Date("Jul 17, 2021");
     setInterval(() => {
-      const currentDate = Date.now();
-      const deltaTime = targetDate - currentDate;
-      updateClockface(deltaTime);
+      updateClockface();
+      updateTime();
     }, 1000);
   },
 };
 timer.start();
 
-function updateClockface(time) {
-  const days = pad(Math.floor(time / (1000 * 60 * 60 * 24)));
-  const hours = pad(
+function updateClockface() {
+  const currentDate = Date.now();
+  const time = targetDate - currentDate;
+  newTime.days = pad(Math.floor(time / (1000 * 60 * 60 * 24)));
+  newTime.hours = pad(
     Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
   );
-  const mins = pad(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
-  const secs = pad(Math.floor((time % (1000 * 60)) / 1000));
+  newTime.mins = pad(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
+  newTime.secs = pad(Math.floor((time % (1000 * 60)) / 1000));
 }
-function getTime() {
-  refs.daysRef.textContent = `${days}`;
-  refs.hoursRef.textContent = `${hours}`;
-  refs.minsRef.textContent = `${mins}`;
-  refs.secsRef.textContent = `${secs}`;
+function updateTime() {
+  refs.daysRef.textContent = `${newTime.days}`;
+  refs.hoursRef.textContent = `${newTime.hours}`;
+  refs.minsRef.textContent = `${newTime.mins}`;
+  refs.secsRef.textContent = `${newTime.secs}`;
 }
 function pad(value) {
   return String(value).padStart(2, "0");
